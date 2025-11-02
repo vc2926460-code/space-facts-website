@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Space & Science Facts</title>
+  <meta name="description" content="A dynamic website that shows random space and science facts every time you refresh or click a button." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --accent: #06b6d4;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, rgba(6,182,212,0.2), transparent), var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 40px;
+      width: 90%;
+      max-width: 480px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    p#fact {
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.5;
+      margin: 20px 0;
+      transition: opacity 0.4s ease;
+    }
+    button {
+      background: var(--accent);
+      border: none;
+      color: white;
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: #0891b2;
+      transform: translateY(-2px);
+    }
+    footer {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Space & Science Facts</h1>
+    <p id="fact">Loading a cosmic fact...</p>
+    <button id="newFactBtn">Show Another Fact</button>
+    <footer>Made with ❤️ — Refresh or click for more!</footer>
+  </div>
+
+  <script>
+    const facts = [
+      "Space is completely silent because there is no air for sound to travel through.",
+      "A teaspoon of a neutron star would weigh about 6 billion tons.",
+      "The sun accounts for 99.86% of the mass in our solar system.",
+      "One day on Venus is longer than one year on Venus.",
+      "Light from the Sun takes around 8 minutes and 20 seconds to reach Earth.",
+      "There are more stars in the universe than grains of sand on all Earth's beaches.",
+      "Saturn could float in water because it's mostly made of gas.",
+      "The Great Red Spot on Jupiter is a storm that has been raging for over 300 years.",
+      "A single bolt of lightning can heat the air around it to five times hotter than the Sun’s surface.",
+      "The Milky Way galaxy will collide with the Andromeda galaxy in about 4.5 billion years.",
+      "The speed of light is about 299,792 kilometers per second.",
+      "Humans share 60% of their DNA with bananas.",
+      "Water can boil and freeze at the same time — it’s called the triple point.",
+      "Black holes don’t actually suck — objects fall into them due to extreme gravity.",
+      "There is a planet made entirely of diamonds called 55 Cancri e.",
+      "An astronaut’s height can increase by up to 2 inches in space due to zero gravity.",
+      "Mars has the largest volcano in the solar system — Olympus Mons.",
+      "Neutron stars can spin 600 times per second.",
+      "If two pieces of the same metal touch in space, they will permanently bond — a process called cold welding.",
+      "The universe is estimated to be 13.8 billion years old."
+    ];
+
+    const factText = document.getElementById('fact');
+    const btn = document.getElementById('newFactBtn');
+
+    function showFact() {
+      const randomIndex = Math.floor(Math.random() * facts.length);
+      factText.style.opacity = 0;
+      setTimeout(() => {
+        factText.textContent = facts[randomIndex];
+        factText.style.opacity = 1;
+      }, 300);
+    }
+
+    btn.addEventListener('click', showFact);
+    window.addEventListener('load', showFact);
+  </script>
+</body>
+</html>
